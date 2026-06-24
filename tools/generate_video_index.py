@@ -21,8 +21,10 @@ If your videos are already inside ./videos, run:
 from __future__ import annotations
 import argparse, json, re
 from pathlib import Path
+from urllib.parse import quote
 
 VIDEO_EXTS = {".mp4", ".webm", ".mov", ".m4v", ".avi", ".mkv"}
+DEFAULT_VIDEO_BASE_URL = "https://ambijat.github.io/gym-band/videos"
 GROUP_HINTS = [
     ("Adductors / Groin", ["adductor", "adductors", "groin"]),
     ("Shoulders / Posture", ["shoulder", "pull-apart", "pull apart", "posture", "face-pull", "face pull", "rotator"]),
@@ -51,11 +53,17 @@ def infer_group(path: Path) -> str:
         return parent.replace("_", " ").replace("-", " ").title()
     return "General"
 
+def video_url(prefix: str, rel: Path) -> str:
+    rel_url = "/".join(quote(part) for part in rel.parts)
+    if prefix.startswith(("http://", "https://")):
+        return f"{prefix.rstrip('/')}/{rel_url}"
+    return f"{prefix.rstrip('/')}/{rel_url}" if prefix else rel_url
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--source", default="/media/ambijat/FIGHTER/ANDROIDWORKS/gym-band/videos", help="Directory containing exercise videos")
     ap.add_argument("--out", default="videos.json", help="Output JSON path, normally videos.json beside index.html")
-    ap.add_argument("--prefix", default="videos", help="URL prefix used by index.html for video files")
+    ap.add_argument("--prefix", default=DEFAULT_VIDEO_BASE_URL, help="URL prefix used by index.html for video files")
     args = ap.parse_args()
 
     source = Path(args.source).expanduser().resolve()
@@ -68,7 +76,7 @@ def main() -> None:
         rows.append({
             "title": title_from_path(path),
             "group": infer_group(rel),
-            "file": str(Path(args.prefix) / rel).replace("\\", "/"),
+            "file": video_url(args.prefix, rel),
         })
 
     out = Path(args.out)

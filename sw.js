@@ -1,4 +1,4 @@
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE_PREFIX = "band-training-";
 const APP_CACHE = `${CACHE_PREFIX}app-${VERSION}`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-${VERSION}`;
@@ -43,6 +43,10 @@ self.addEventListener("message", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
+  if (isVideoRequest(request)) {
+    event.respondWith(fetch(request));
+    return;
+  }
 
   if (request.mode === "navigate") {
     event.respondWith(networkFirst(request));
@@ -53,6 +57,15 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(staleWhileRevalidate(request));
   }
 });
+
+function isVideoRequest(request) {
+  if (request.destination === "video") return true;
+  try {
+    return /\.(mp4|webm|mov|m4v|avi|mkv)(\?|$)/i.test(new URL(request.url).pathname);
+  } catch {
+    return false;
+  }
+}
 
 async function networkFirst(request) {
   try {

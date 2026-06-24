@@ -100,6 +100,26 @@ Syntax check for the inline JavaScript:
 awk '/<script>/{flag=1;next}/<\/script>/{flag=0}flag' index.html | node --check
 ```
 
+## 4A. Hosted Video Rule
+
+The videos are intentionally hosted from the GitHub repo/GitHub Pages, not bundled into Google Play artifacts.
+
+`videos.json` should contain absolute hosted URLs such as:
+
+```text
+https://ambijat.github.io/gym-band/videos/stability.mp4
+```
+
+Generate that catalogue with:
+
+```bash
+python3 tools/generate_video_index.py \
+  --source /media/ambijat/FIGHTER/ANDROIDWORKS/gym-band/videos \
+  --out videos.json
+```
+
+The `videos/` directory belongs in the GitHub repo so GitHub Pages can serve it. The Android APK/AAB should remain a lightweight TWA wrapper and must not contain `.mp4`, `.webm`, `.mov`, `.m4v`, `.avi`, or `.mkv` files.
+
 ## 5. Bump Release Version
 
 Edit:
@@ -149,6 +169,16 @@ List generated artifacts:
 ```bash
 find app/build/outputs -maxdepth 5 -type f \( -name '*.apk' -o -name '*.aab' \) -printf '%p %TY-%Tm-%Td %TH:%TM:%TS %s bytes\n' | sort
 ```
+
+Confirm that debug/release Android archives do not bundle exercise videos:
+
+```bash
+zipinfo -1 app/build/outputs/apk/debug/app-debug.apk | rg -i '\.(mp4|webm|mov|m4v|avi|mkv)$' || true
+zipinfo -1 app/build/outputs/apk/release/app-release-unsigned.apk | rg -i '\.(mp4|webm|mov|m4v|avi|mkv)$' || true
+zipinfo -1 app/build/outputs/bundle/release/app-release.aab | rg -i '\.(mp4|webm|mov|m4v|avi|mkv)$' || true
+```
+
+Expected output: no matching files.
 
 ## 7. Signing Setup
 
@@ -360,7 +390,7 @@ Refreshed Band Training launch assets and screenshots.
 After installing the internal test build:
 
 - Confirm the launcher icon, splash image, and shortcut icon use the Band Training mark.
-- Open the app and confirm `videos.json` loads the local video catalogue.
+- Open the app and confirm `videos.json` loads hosted GitHub Pages video URLs.
 - Use search and body-area filters.
 - Play a video card.
 - Mark at least one exercise done.

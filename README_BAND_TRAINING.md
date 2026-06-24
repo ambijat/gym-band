@@ -63,6 +63,14 @@ python3 tools/generate_video_index.py \
   --out videos.json
 ```
 
+By default, generated video entries use absolute GitHub Pages URLs like:
+
+```text
+https://ambijat.github.io/gym-band/videos/quadriceps.mp4
+```
+
+This is intentional. The videos are hosted by the GitHub repo/GitHub Pages and streamed by the app. They are not packaged inside the Android APK or AAB that goes to Google Play.
+
 If your video files are directly inside the project root instead of `videos/`, run:
 
 ```bash
@@ -73,6 +81,15 @@ python3 tools/generate_video_index.py \
 ```
 
 The script infers body-area groups from filenames and folder names. You can manually edit `videos.json` afterwards.
+
+If you need local relative URLs for offline browser testing, pass an explicit prefix:
+
+```bash
+python3 tools/generate_video_index.py \
+  --source /media/ambijat/FIGHTER/ANDROIDWORKS/gym-band/videos \
+  --out videos.json \
+  --prefix videos
+```
 
 ## Visual assets
 
@@ -103,3 +120,11 @@ The debug APK is written to:
 ```text
 app/build/outputs/apk/debug/app-debug.apk
 ```
+
+The Android artifact is a lightweight Trusted Web Activity wrapper. It points to:
+
+```text
+https://ambijat.github.io/gym-band/
+```
+
+The release checklist in `docs/RELEASE_PROTOCOL.md` includes archive checks to confirm no `.mp4`/video files are bundled into APK or AAB outputs.

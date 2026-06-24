@@ -43,12 +43,13 @@
 <div class="modal" id="modal"><div class="card"><h3>Export band log</h3><p id="exportScope"></p><div class="row" style="margin:0 0 8px"><button class="b-fmt on" id="fmtCsv">CSV</button><button class="b-fmt" id="fmtJson">JSON</button></div><textarea id="expText" readonly></textarea><div class="row"><button class="b-primary" id="copyBtn">Copy</button><button class="b-close" id="downloadBtn">Download</button></div><div class="row"><button class="b-close" id="closeBtn">Close</button></div></div></div>
 <script>
 const $=id=>document.getElementById(id);
+const VIDEO_BASE="https://ambijat.github.io/gym-band/videos/";
 const DEFAULT_VIDEOS=[
- {title:"Band Pull Apart",group:"Shoulders / Posture",file:"videos/band-pull-apart.mp4"},
- {title:"Band Row",group:"Back",file:"videos/band-row.mp4"},
- {title:"Band Chest Press",group:"Chest",file:"videos/band-chest-press.mp4"},
- {title:"Band Squat",group:"Legs",file:"videos/band-squat.mp4"},
- {title:"Band Pallof Press",group:"Core",file:"videos/band-pallof-press.mp4"}
+ {title:"Adductors",group:"Adductors / Groin",file:VIDEO_BASE+"adductors.mp4"},
+ {title:"Quadriceps",group:"Legs",file:VIDEO_BASE+"quadriceps.mp4"},
+ {title:"Speed 1",group:"Speed / Agility",file:VIDEO_BASE+"speed1.mp4"},
+ {title:"Stability",group:"Core / Stability",file:VIDEO_BASE+"stability.mp4"},
+ {title:"Glutes Leg",group:"Legs",file:VIDEO_BASE+"glutes-leg.mp4"}
 ];
 const COLORS=["#c4ff1f","#4cc4ff","#ff6b5e","#b98bff","#37d68a","#ffd23f","#2fe6c8"];
 let videos=[],log=[],memFallback={},groupFilter="all",query="",lastId=null,expFmt="csv";
