@@ -1,0 +1,75 @@
+{
+  "packageId": "com.ambijat.bandtraining",
+  "host": "ambijat.github.io",
+  "name": "Band Training",
+  "launcherName": "Band Log",
+  "display": "standalone",
+  "themeColor": "#0C0E0D",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#0C0E0D",
+  "enableNotifications": true,
+  "startUrl": "/gym-band/",
+  "iconUrl": "https://ambijat.github.io/gym-band/icons/icon-512.png",
+  "maskableIconUrl": "https://ambijat.github.io/gym-band/icons/icon-512-maskable.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/media/ambijat/FIGHTER/ANDROIDWORKS/gym-band/android.keystore",
+    "alias": "bandtrainingkey"
+  },
+  "appVersionName": "1.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Open band videos",
+      "shortName": "Band videos",
+      "url": "https://ambijat.github.io/gym-band/",
+      "chosenIconUrl": "https://ambijat.github.io/gym-band/icons/icon-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://ambijat.github.io/gym-band/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://ambijat.github.io/gym-band/",
+  "minSdkVersion": 21,
+  "shareTarget": {
+    "action": "https://ambijat.github.io/gym-band/?share=1",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [
+    {
+      "actionUrl": "https://ambijat.github.io/gym-band/?import=file",
+      "mimeTypes": [
+        "application/json",
+        "text/csv"
+      ]
+    }
+  ],
+  "launchHandlerClientMode": "focus-existing",
+  "displayOverride": [
+    "tabbed",
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "appVersion": "1.0"
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Band Training",
+  "short_name": "Band Log",
+  "description": "Browse stretch-band exercise videos, mark completed moves, and export your resistance-band training log.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c0e0d",
+  "theme_color": "#0c0e0d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/log-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Band Training mobile video log"
+    },
+    {
+      "src": "screenshots/log-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Band Training wide video log"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open band videos",
+      "short_name": "Band videos",
+      "url": "./",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "./?import=file",
+      "accept": {
+        "application/json": [
+          ".json"
+        ],
+        "text/csv": [
+          ".csv"
+        ]
+      }
+    }
+  ]
+}

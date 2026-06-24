@@ -1,0 +1,31 @@
+# Local machine configuration and signing material
+local.properties
+android.keystore
+*.keystore
+*.jks
+*.p12
+
+# Android and Gradle build output
+.gradle/
+build/
+app/build/
+captures/
+
+# Packaged release artifacts
+*.apk
+*.aab
+*.apks
+*.idsig
+
+# Runtime and editor noise
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+
+# IDE state
+.idea/
+.vscode/
