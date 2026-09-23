@@ -21,7 +21,7 @@
     "alias": "bandtrainingkey"
   },
   "appVersionName": "1.1",
-  "appVersionCode": 2,
+  "appVersionCode": 3,
   "shortcuts": [
     {
       "name": "Open band videos",
@@ -41,7 +41,7 @@
   "isChromeOSOnly": false,
   "isMetaQuest": false,
   "fullScopeUrl": "https://ambijat.github.io/gym-band/",
-  "minSdkVersion": 21,
+  "minSdkVersion": 24,
   "shareTarget": {
     "action": "https://ambijat.github.io/gym-band/?share=1",
     "method": "GET",
