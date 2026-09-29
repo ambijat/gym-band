@@ -20,8 +20,8 @@
     "path": "/media/ambijat/FIGHTER/ANDROIDWORKS/gym-band/android.keystore",
     "alias": "bandtrainingkey"
   },
-  "appVersionName": "1.1",
-  "appVersionCode": 3,
+  "appVersionName": "1.2",
+  "appVersionCode": 4,
   "shortcuts": [
     {
       "name": "Open band videos",
@@ -71,5 +71,5 @@
     "window-controls-overlay",
     "standalone"
   ],
-  "appVersion": "1.1"
+  "appVersion": "1.2"
 }
