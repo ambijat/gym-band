@@ -29,3 +29,24 @@ __pycache__/
 # IDE state
 .idea/
 .vscode/
+*.iml
+
+# Kotlin / Native build state
+.kotlin/
+.cxx/
+.externalNativeBuild/
+
+# Extra signing material that must never be committed
+keystore.properties
+signing-keys/
+*.pem
+*.cer
+*.hprof
+
+# Local release staging
+release/
+app/release/
+
+# Git worktree leftovers from interrupted operations
+*.orig
+*.rej
